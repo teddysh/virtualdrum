@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aplikasi Drum dengan Shortkey Keyboard</title>
+<style>
+  body {
+    background-color: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  h1 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .drum-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+  }
+  .drum-pad {
+    background: linear-gradient(145deg, #1f1f1f, #292929);
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #0b0b0b,
+                -5px -5px 10px #343434;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s ease;
+    font-weight: bold;
+    font-size: 18px;
+    color: #eee;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .drum-pad:active, .drum-pad.active {
+    background: #36b9cc;
+    color: #121212;
+    box-shadow: inset 4px 4px 10px rgba(255,255,255,0.4),
+                inset -4px -4px 10px rgba(0,0,0,0.15);
+    transform: scale(0.95);
+  }
+  .key {
+    font-size: 24px;
+    background: #222;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    box-shadow: 1px 1px 4px #000;
+  }
+  .label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+
+<h1>Aplikasi Drum (Tekan tombol keyboard!)</h1>
+
+<div class="drum-container" role="region" aria-label="Papan Drum">
+  
+  <div class="drum-pad" data-key="65" tabindex="0" aria-pressed="false" role="button" aria-label="Sound A (Key A)">
+  <div class="key">A</div>
+  <div class="label">Sound A</div>
+</div>
+
+<div class="drum-pad" data-key="66" tabindex="0" aria-pressed="false" role="button" aria-label="Sound B (Key B)">
+  <div class="key">B</div>
+  <div class="label">Sound B</div>
+</div>
+
+<div class="drum-pad" data-key="67" tabindex="0" aria-pressed="false" role="button" aria-label="Sound C (Key C)">
+  <div class="key">C</div>
+  <div class="label">Sound C</div>
+</div>
+
+<div class="drum-pad" data-key="68" tabindex="0" aria-pressed="false" role="button" aria-label="Sound D (Key D)">
+  <div class="key">D</div>
+  <div class="label">Sound D</div>
+</div>
+
+<div class="drum-pad" data-key="69" tabindex="0" aria-pressed="false" role="button" aria-label="Sound E (Key E)">
+  <div class="key">E</div>
+  <div class="label">Sound E</div>
+</div>
+
+<div class="drum-pad" data-key="70" tabindex="0" aria-pressed="false" role="button" aria-label="Sound F (Key F)">
+  <div class="key">F</div>
+  <div class="label">Sound F</div>
+</div>
+
+<div class="drum-pad" data-key="71" tabindex="0" aria-pressed="false" role="button" aria-label="Sound G (Key G)">
+  <div class="key">G</div>
+  <div class="label">Sound G</div>
+</div>
+
+<div class="drum-pad" data-key="72" tabindex="0" aria-pressed="false" role="button" aria-label="Sound H (Key H)">
+  <div class="key">H</div>
+  <div class="label">Sound H</div>
+</div>
+
+<div class="drum-pad" data-key="73" tabindex="0" aria-pressed="false" role="button" aria-label="Sound I (Key I)">
+  <div class="key">I</div>
+  <div class="label">Sound I</div>
+</div>
+
+<div class="drum-pad" data-key="74" tabindex="0" aria-pressed="false" role="button" aria-label="Sound J (Key J)">
+  <div class="key">J</div>
+  <div class="label">Sound J</div>
+</div>
+
+<div class="drum-pad" data-key="75" tabindex="0" aria-pressed="false" role="button" aria-label="Sound K (Key K)">
+  <div class="key">K</div>
+  <div class="label">Sound K</div>
+</div>
+
+<div class="drum-pad" data-key="76" tabindex="0" aria-pressed="false" role="button" aria-label="Sound L (Key L)">
+  <div class="key">L</div>
+  <div class="label">Sound L</div>
+</div>
+
+<div class="drum-pad" data-key="77" tabindex="0" aria-pressed="false" role="button" aria-label="Sound M (Key M)">
+  <div class="key">M</div>
+  <div class="label">Sound M</div>
+</div>
+
+<div class="drum-pad" data-key="78" tabindex="0" aria-pressed="false" role="button" aria-label="Sound N (Key N)">
+  <div class="key">N</div>
+  <div class="label">Sound N</div>
+</div>
+
+<div class="drum-pad" data-key="79" tabindex="0" aria-pressed="false" role="button" aria-label="Sound O (Key O)">
+  <div class="key">O</div>
+  <div class="label">Sound O</div>
+</div>
+
+<div class="drum-pad" data-key="80" tabindex="0" aria-pressed="false" role="button" aria-label="Sound P (Key P)">
+  <div class="key">P</div>
+  <div class="label">Sound P</div>
+</div>
+
+<div class="drum-pad" data-key="81" tabindex="0" aria-pressed="false" role="button" aria-label="Sound Q (Key Q)">
+  <div class="key">Q</div>
+  <div class="label">Sound Q</div>
+</div>
+
+<div class="drum-pad" data-key="82" tabindex="0" aria-pressed="false" role="button" aria-label="Sound R (Key R)">
+  <div class="key">R</div>
+  <div class="label">Sound R</div>
+</div>
+
+<div class="drum-pad" data-key="83" tabindex="0" aria-pressed="false" role="button" aria-label="Sound S (Key S)">
+  <div class="key">S</div>
+  <div class="label">Sound S</div>
+</div>
+
+<div class="drum-pad" data-key="84" tabindex="0" aria-pressed="false" role="button" aria-label="Sound T (Key T)">
+  <div class="key">T</div>
+  <div class="label">Sound T</div>
+</div>
+
+<div class="drum-pad" data-key="85" tabindex="0" aria-pressed="false" role="button" aria-label="Sound U (Key U)">
+  <div class="key">U</div>
+  <div class="label">Sound U</div>
+</div>
+
+<div class="drum-pad" data-key="86" tabindex="0" aria-pressed="false" role="button" aria-label="Sound V (Key V)">
+  <div class="key">V</div>
+  <div class="label">Sound V</div>
+</div>
+
+<div class="drum-pad" data-key="87" tabindex="0" aria-pressed="false" role="button" aria-label="Sound W (Key W)">
+  <div class="key">W</div>
+  <div class="label">Sound W</div>
+</div>
+
+<div class="drum-pad" data-key="88" tabindex="0" aria-pressed="false" role="button" aria-label="Sound X (Key X)">
+  <div class="key">X</div>
+  <div class="label">Sound X</div>
+</div>
+
+<div class="drum-pad" data-key="89" tabindex="0" aria-pressed="false" role="button" aria-label="Sound Y (Key Y)">
+  <div class="key">Y</div>
+  <div class="label">Sound Y</div>
+</div>
+
+<div class="drum-pad" data-key="90" tabindex="0" aria-pressed="false" role="button" aria-label="Sound Z (Key Z)">
+  <div class="key">Z</div>
+  <div class="label">Sound Z</div>
+</div>
+
+<div class="drum-pad" data-key="188" tabindex="0" aria-pressed="false" role="button" aria-label="Ride">
+  <div class="key">,</div>
+  <div class="label">Ride</div>
+</div>
+
+<div class="drum-pad" data-key="190" tabindex="0" aria-pressed="false" role="button" aria-label="Center Ride">
+  <div class="key">.</div>
+  <div class="label">Ride (middle)</div>
+</div>
+
+<div class="drum-pad" data-key="191" tabindex="0" aria-pressed="false" role="button" aria-label="Damped Hi Hat">
+  <div class="key">/</div>
+  <div class="label">Damped Hi Hat</div>
+</div>
+
+
+</div>
+
+<footer>Under development - Teddy Septian H</footer>
+
+<audio data-key="65" src="assets/sounds/A.wav"></audio> <!-- A -->
+<audio data-key="66" src="assets/sounds/B.wav"></audio> <!-- B -->
+<audio data-key="67" src="assets/sounds/snare-acoustic01.wav"></audio> <!-- C -->
+<audio data-key="68" src="assets/sounds/high-tom-1.wav"></audio> <!-- D -->
+<audio data-key="69" src="assets/sounds/E.wav"></audio> <!-- E -->
+<audio data-key="70" src="assets/sounds/high-tom-1.wav"></audio> <!-- F -->
+<audio data-key="71" src="assets/sounds/mid-tom-2.wav"></audio> <!-- G -->
+<audio data-key="72" src="assets/sounds/mid-tom-2.wav"></audio> <!-- H -->
+<audio data-key="73" src="assets/sounds/crash-1.wav"></audio> <!-- I -->
+<audio data-key="74" src="assets/sounds/low-mid-tome-1.wav"></audio> <!-- J -->
+<audio data-key="75" src="assets/sounds/low-mid-tome-1.wav"></audio> <!-- K -->
+<audio data-key="76" src="assets/sounds/damped-open-hat-2.wav"></audio> <!-- L -->
+<audio data-key="77" src="assets/sounds/highat-2.wav"></audio> <!-- M -->
+<audio data-key="78" src=""></audio> <!-- N -->
+<audio data-key="79" src="assets/sounds/drum-china-1.wav"></audio> <!-- O -->
+<audio data-key="80" src="assets/sounds/drum-china-1.wav"></audio> <!-- P -->
+<audio data-key="81" src="assets/sounds/Q.wav"></audio> <!-- Q -->
+<audio data-key="82" src="assets/sounds/drum-crash-2_1bpm_E_minor.wav"></audio> <!-- R -->
+<audio data-key="83" src="assets/sounds/S.wav"></audio> <!-- S -->
+<audio data-key="84" src="assets/sounds/drum-crash-2_1bpm_E_minor.wav"></audio> <!-- T -->
+<audio data-key="85" src="assets/sounds/crash-1.wav"></audio> <!-- U -->
+<audio data-key="86" src="assets/sounds/snare-acoustic01.wav"></audio> <!-- V -->
+<audio data-key="87" src="assets/sounds/W.wav"></audio> <!-- W -->
+<audio data-key="88" src="assets/sounds/kick-1.wav"></audio> <!-- X -->
+<audio data-key="89" src="assets/sounds/drum-crash-4_5bpm_E_major.wav"></audio> <!-- Y -->
+<audio data-key="90" src="assets/sounds/kick-1.wav"></audio> <!-- Z -->
+<audio data-key="188" src="assets/sounds/close-highat-2.wav"></audio> <!-- Koma (,) -->
+<audio data-key="190" src="assets/sounds/ride-acoustic02.wav"></audio> <!-- Titik (.) -->
+<audio data-key="191" src="assets/sounds/ride-acoustic01.wav"></audio> <!-- Titik (.) -->
+
+<script>
+  // Fungsi untuk memainkan suara berdasarkan keycode
+  function playSound(keyCode) {
+    const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+    const pad = document.querySelector(`.drum-pad[data-key="${keyCode}"]`);
+    if (!audio) return;
+
+    audio.currentTime = 0; // Reset audio ke awal agar bisa diputar berulang
+    audio.play();
+
+    if (!pad) return;
+    pad.classList.add('active');
+    pad.setAttribute('aria-pressed', 'true');
+    setTimeout(() => {
+      pad.classList.remove('active');
+      pad.setAttribute('aria-pressed', 'false');
+    }, 150);
+  }
+
+  // Event listener untuk keyboard
+  window.addEventListener('keydown', e => {
+    playSound(e.keyCode);
+  });
+
+  // Event listener untuk click pada drum pad agar bisa juga dengan klik mouse
+  const pads = document.querySelectorAll('.drum-pad');
+  pads.forEach(pad => {
+    pad.addEventListener('click', () => {
+      const keyCode = pad.getAttribute('data-key');
+      playSound(keyCode);
+    });
+    // Mendukung keyboard focus + enter/space untuk aksesibilitas
+    pad.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const keyCode = pad.getAttribute('data-key');
+        playSound(keyCode);
+      }
+    });
+  });
+
+ const audios = document.querySelectorAll('audio[data-key="85"], audio[data-key="73"], audio[data-key="82"], audio[data-key="84"], audio[data-key="188"], audio[data-key="190"], audio[data-key="77"], audio[data-key="89"]');
+audios.forEach(audio => {
+    audio.volume = 0.6;
+    audio.currentTime = 0;
+    audio.play();
+});
+
+ const snares = document.querySelectorAll('audio[data-key="67"], audio[data-key="86"]');
+snares.forEach(snare => {
+    snare.volume = 0.7;
+    snare.currentTime = 0;
+    snare.play();
+});
+
+ const highToms = document.querySelectorAll('audio[data-key="70"], audio[data-key="68"]');
+highToms.forEach(highTom => {
+    highTom.volume = 1;
+    highTom.currentTime = 0;
+    highTom.play();
+});
+</script>
+
+</body>
+</html>
+
