@@ -318,6 +318,14 @@ audios.forEach(audio => {
     audio.play();
 });
 
+const oHiHats = document.querySelectorAll('audio[data-key="68"]');
+ if (oHiHats.length > 0) {
+    const ohihat = oHiHats[0];
+    ohihat.volume = 0.5;
+    ohihat.currentTime = 0;
+    ohihat.play();
+}
+
  const snares = document.querySelectorAll('audio[data-key="67"], audio[data-key="86"]');
 snares.forEach(snare => {
     snare.volume = 0.7;
@@ -332,6 +340,7 @@ if (crash2s.length > 0) {
     crash2.currentTime = 0;
     crash2.play();
 }
+
 
  const rides = document.querySelectorAll('audio[data-key="77"], audio[data-key="78"]');
 rides.forEach(ride => {
@@ -349,7 +358,7 @@ if (middleRides.length > 0) {
 }
 
 
- const highToms = document.querySelectorAll('audio[data-key="70"], audio[data-key="68"]');
+ const highToms = document.querySelectorAll('audio[data-key="70"]');
 highToms.forEach(highTom => {
     highTom.volume = 1;
     highTom.currentTime = 0;
