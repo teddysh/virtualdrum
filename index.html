@@ -230,6 +230,10 @@
   <div class="label">Damped Hi Hat</div>
 </div>
 
+<div class="drum-pad" data-key="16" tabindex="0" aria-pressed="false" role="button" aria-label="Close Hi Hat">
+  <div class="key">Shift</div>
+  <div class="label">Close Hi Hat</div>
+</div>
 
 </div>
 
@@ -238,22 +242,22 @@
 <audio data-key="65" src="assets/sounds/A.wav"></audio> <!-- A -->
 <audio data-key="66" src="assets/sounds/B.wav"></audio> <!-- B -->
 <audio data-key="67" src="assets/sounds/snare-acoustic01.wav"></audio> <!-- C -->
-<audio data-key="68" src="assets/sounds/high-tom-1.wav"></audio> <!-- D -->
+<audio data-key="68" src="assets/sounds/highat-2.wav"></audio> <!-- D -->
 <audio data-key="69" src="assets/sounds/E.wav"></audio> <!-- E -->
 <audio data-key="70" src="assets/sounds/high-tom-1.wav"></audio> <!-- F -->
-<audio data-key="71" src="assets/sounds/mid-tom-2.wav"></audio> <!-- G -->
+<audio data-key="71" src="assets/sounds/high-tom-1.wav"></audio> <!-- G -->
 <audio data-key="72" src="assets/sounds/mid-tom-2.wav"></audio> <!-- H -->
 <audio data-key="73" src="assets/sounds/crash-1.wav"></audio> <!-- I -->
-<audio data-key="74" src="assets/sounds/low-mid-tome-1.wav"></audio> <!-- J -->
+<audio data-key="74" src="assets/sounds/mid-tom-2.wav"></audio> <!-- J -->
 <audio data-key="75" src="assets/sounds/low-mid-tome-1.wav"></audio> <!-- K -->
-<audio data-key="76" src="assets/sounds/damped-open-hat-2.wav"></audio> <!-- L -->
-<audio data-key="77" src="assets/sounds/highat-2.wav"></audio> <!-- M -->
-<audio data-key="78" src=""></audio> <!-- N -->
+<audio data-key="76" src="assets/sounds/low-mid-tome-1.wav"></audio> <!-- L -->
+<audio data-key="77" src="assets/sounds/ride-acoustic02.wav"></audio> <!-- M -->
+<audio data-key="78" src="assets/sounds/ride-acoustic02.wav"></audio> <!-- N -->
 <audio data-key="79" src="assets/sounds/drum-china-1.wav"></audio> <!-- O -->
 <audio data-key="80" src="assets/sounds/drum-china-1.wav"></audio> <!-- P -->
 <audio data-key="81" src="assets/sounds/Q.wav"></audio> <!-- Q -->
 <audio data-key="82" src="assets/sounds/drum-crash-2_1bpm_E_minor.wav"></audio> <!-- R -->
-<audio data-key="83" src="assets/sounds/S.wav"></audio> <!-- S -->
+<audio data-key="83" src="assets/sounds/damped-open-hat-1.wav"></audio> <!-- S -->
 <audio data-key="84" src="assets/sounds/drum-crash-2_1bpm_E_minor.wav"></audio> <!-- T -->
 <audio data-key="85" src="assets/sounds/crash-1.wav"></audio> <!-- U -->
 <audio data-key="86" src="assets/sounds/snare-acoustic01.wav"></audio> <!-- V -->
@@ -261,9 +265,10 @@
 <audio data-key="88" src="assets/sounds/kick-1.wav"></audio> <!-- X -->
 <audio data-key="89" src="assets/sounds/drum-crash-4_5bpm_E_major.wav"></audio> <!-- Y -->
 <audio data-key="90" src="assets/sounds/kick-1.wav"></audio> <!-- Z -->
-<audio data-key="188" src="assets/sounds/close-highat-2.wav"></audio> <!-- Koma (,) -->
-<audio data-key="190" src="assets/sounds/ride-acoustic02.wav"></audio> <!-- Titik (.) -->
-<audio data-key="191" src="assets/sounds/ride-acoustic01.wav"></audio> <!-- Titik (.) -->
+<audio data-key="188" src="assets/sounds/ride-acoustic01.wav"></audio> <!-- Koma (,) -->
+<audio data-key="190" src=""></audio> <!-- Titik (.) -->
+<audio data-key="191" src=""></audio> <!-- / -->
+<audio data-key="16" src="assets/sounds/close-highat-2.wav"></audio> <!-- shift -->
 
 <script>
   // Fungsi untuk memainkan suara berdasarkan keycode
@@ -306,9 +311,9 @@
     });
   });
 
- const audios = document.querySelectorAll('audio[data-key="85"], audio[data-key="73"], audio[data-key="82"], audio[data-key="84"], audio[data-key="188"], audio[data-key="190"], audio[data-key="77"], audio[data-key="89"]');
+ const audios = document.querySelectorAll('audio[data-key="85"], audio[data-key="73"], audio[data-key="82"], audio[data-key="84"], audio, audio[data-key="89"]');
 audios.forEach(audio => {
-    audio.volume = 0.6;
+    audio.volume = 0.5;
     audio.currentTime = 0;
     audio.play();
 });
@@ -319,6 +324,30 @@ snares.forEach(snare => {
     snare.currentTime = 0;
     snare.play();
 });
+
+ const crash2s = document.querySelectorAll('audio[data-key="89"]');
+if (crash2s.length > 0) {
+    const crash2 = crash2s[0];
+    crash2.volume = 0.4;
+    crash2.currentTime = 0;
+    crash2.play();
+}
+
+ const rides = document.querySelectorAll('audio[data-key="77"], audio[data-key="78"]');
+rides.forEach(ride => {
+    ride.volume = 0.5;
+    ride.currentTime = 0;
+    ride.play();
+});
+
+ const middleRides = document.querySelectorAll('audio[data-key="191"]');
+if (middleRides.length > 0) {
+    const middleRide = middleRides[0];
+    middleRide.volume = 0.5;
+    middleRide.currentTime = 0;
+    middleRide.play();
+}
+
 
  const highToms = document.querySelectorAll('audio[data-key="70"], audio[data-key="68"]');
 highToms.forEach(highTom => {
