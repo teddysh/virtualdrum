@@ -318,6 +318,17 @@ audios.forEach(audio => {
     audio.play();
 });
 
+const audio = new Audio('kick.wav');
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const track = audioContext.createMediaElementSource(audio);
+const gainNode = audioContext.createGain();
+
+// Atur gain lebih dari 1 untuk volume > 100%
+gainNode.gain.value = 1.5;
+
+track.connect(gainNode).connect(audioContext.destination);
+audio.play();
+
 const oHiHats = document.querySelectorAll('audio[data-key="68"]');
  if (oHiHats.length > 0) {
     const ohihat = oHiHats[0];
