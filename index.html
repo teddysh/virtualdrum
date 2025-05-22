@@ -332,12 +332,12 @@ audio.play();
 const china = new Audio('drum-china-1.wav');
 const chinaContext = new (window.AudioContext || window.webkitAudioContext)();
 const chinaTrack = chinaContext.createMediaElementSource(china);
-const gainNode = chinaContext.createGain();
+const chinaNode = chinaContext.createGain();
 
 // Atur gain lebih dari 1 untuk volume > 100%
-gainNode.gain.value = 2;
+chinaNode.gain.value = 2;
 
-chinaTrack.connect(gainNode).connect(chinaContext.destination);
+chinaTrack.connect(chinaNode).connect(chinaContext.destination);
 china.play();
 
 const oHiHats = document.querySelectorAll('audio[data-key="68"]');
