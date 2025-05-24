@@ -311,6 +311,41 @@
     });
   });
 
+  // Daftar pasangan yang harus diputar bersamaan
+const linkedKeys = {
+  70: [70, 71], // F → G & F
+  71: [70, 71], // G → F & G
+  79: [79, 80], // O → O & P
+  80: [79, 80], // P → O & P
+  90: [90, 88], // Z → Z & X
+  88: [90, 88], // X → Z & X
+};
+
+function playLinkedSounds(keyCode) {
+  const keysToPlay = linkedKeys[keyCode];
+  if (!keysToPlay) return;
+
+  keysToPlay.forEach(code => {
+    const audio = document.querySelector(`audio[data-key="${code}"]`);
+    if (audio) {
+      audio.currentTime = 0; // Reset agar bisa dimainkan lagi
+      audio.play();
+    }
+  });
+}
+
+// Klik pada drum pad
+document.querySelectorAll('.drum-pad').forEach(pad => {
+  pad.addEventListener('click', () => {
+    const key = parseInt(pad.getAttribute('data-key'));
+    playLinkedSounds(key);
+  });
+});
+
+// Tekan tombol keyboard
+window.addEventListener('keydown', e => {
+  playLinkedSounds(e.keyCode);
+});
  const audios = document.querySelectorAll('audio[data-key="85"], audio[data-key="73"], audio[data-key="82"], audio[data-key="84"], audio, audio[data-key="89"]');
 audios.forEach(audio => {
     audio.volume = 0.5;
@@ -318,27 +353,6 @@ audios.forEach(audio => {
     audio.play();
 });
 
-const audio = new Audio('kick-1.wav');
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-const track = audioContext.createMediaElementSource(audio);
-const gainNode = audioContext.createGain();
-
-// Atur gain lebih dari 1 untuk volume > 100%
-gainNode.gain.value = 2;
-
-track.connect(gainNode).connect(audioContext.destination);
-audio.play();
-
-const china = new Audio('drum-china-1.wav');
-const chinaContext = new (window.AudioContext || window.webkitAudioContext)();
-const chinaTrack = chinaContext.createMediaElementSource(china);
-const chinaNode = chinaContext.createGain();
-
-// Atur gain lebih dari 1 untuk volume > 100%
-chinaNode.gain.value = 2;
-
-chinaTrack.connect(chinaNode).connect(chinaContext.destination);
-china.play();
 
 const oHiHats = document.querySelectorAll('audio[data-key="68"]');
  if (oHiHats.length > 0) {
@@ -366,15 +380,15 @@ if (crash2s.length > 0) {
 
  const rides = document.querySelectorAll('audio[data-key="77"], audio[data-key="78"]');
 rides.forEach(ride => {
-    ride.volume = 0.5;
+    ride.volume = 0.3;
     ride.currentTime = 0;
     ride.play();
 });
 
- const middleRides = document.querySelectorAll('audio[data-key="191"]');
+ const middleRides = document.querySelectorAll('audio[data-key="188"]');
 if (middleRides.length > 0) {
     const middleRide = middleRides[0];
-    middleRide.volume = 0.5;
+    middleRide.volume = 0.3;
     middleRide.currentTime = 0;
     middleRide.play();
 }
